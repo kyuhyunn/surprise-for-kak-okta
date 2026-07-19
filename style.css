@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #d4a373 0%, #faedcd 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4a3b32;
+    overflow-x: hidden;
+    position: relative; 
+}
+
+/* --- Hiasan Partikel Bergerak --- */
+.hiasan-bergerak {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Biar tetap bisa diklik kotak pesannya */
+    z-index: 0; 
+}
+
+.partikel {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0.6;
+    animation: terbang linear infinite;
+}
+
+@keyframes terbang {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+/* -------------------------------- */
+
+/* Pembungkus Layar */
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 1; /* Posisi di depan partikel */
+    position: relative;
+}
+
+.tersembunyi {
+    display: none !important;
+}
+
+/* --- Layout Grid Menu Kartu (Biar Rapi) --- */
+.menu-pesan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.kartu-pesan {
+    background-color: #fdfbf7;
+    color: #6d4c41;
+    border: 2px dashed #d4a373;
+    padding: 15px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(212, 163, 115, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.kartu-pesan::before {
+    content: "💌"; 
+    font-size: 26px;
+}
+
+.kartu-pesan:hover {
+    transform: translateY(-5px);
+    background-color: #faedcd;
+    border-color: #c9935f;
+    box-shadow: 0 10px 15px rgba(212, 163, 115, 0.4);
+}
+/* ------------------------------------------- */
+
+/* Layout Kertas Surat Terbuka */
+.kertas-surat {
+    background: #fdfbf7;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 600px;
+    animation: munculMembesar 0.5s ease-out forwards;
+    border: 1px solid #e9d5b5;
+}
+
+@keyframes munculMembesar {
+    from { transform: scale(0.9) translateY(20px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Tombol Kembali */
+#tombol-kembali {
+    background-color: #ccd5ae; 
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(204, 213, 174, 0.4);
+    margin-top: 30px;
+    color: #4a3b32;
+    transition: all 0.2s;
+}
+
+#tombol-kembali:hover {
+    background-color: #b9c497;
+    transform: scale(1.05);
+}
+
+/* Font dan Spasi */
+.font-poppins { font-family: 'Poppins', sans-serif; }
+.font-inter { font-family: 'Inter', sans-serif; line-height: 1.6; }
+.font-pacifico { font-family: 'Pacifico', cursive; color: #6d4c41; margin-bottom: 10px; }
+.font-caveat { font-family: 'Caveat', cursive; font-size: 24px; line-height: 1.5; color: #5d4037; }
+
+#isi-surat p {
+    margin-bottom: 15px;
+}
+
+/* --- Penyesuaian Layar HP --- */
+@media (max-width: 600px) {
+    .menu-pesan {
+        grid-template-columns: repeat(2, 1fr); /* Pasti berjejer 2 di HP */
+        gap: 10px;
+    }
+    .kartu-pesan {
+        font-size: 12px;
+        padding: 12px;
+    }
+    .kertas-surat {
+        padding: 25px 20px;
+    }
+    h1 {
+        font-size: 24px;
+    }
+    .font-caveat {
+        font-size: 20px;
+    }
+}
