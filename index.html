@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Kakak PJ</title>
+    <!-- Font estetik -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Inter:wght@400;600&family=Pacifico&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Layar Menu Utama -->
+    <div id="layar-menu" class="screen">
+        <h1 class="font-pacifico">dibaca satu satu yaa kak oktaa 💌</h1>
+        <p class="font-poppins">semoga suka sama pesan pesan kitaa</p>
+        
+        <!-- Tombol-tombol pesan akan muncul otomatis di sini -->
+        <div id="wadah-tombol" class="menu-pesan"></div>
+    </div>
+
+    <!-- Layar Isi Pesan -->
+    <div id="layar-pesan" class="screen tersembunyi">
+        <div class="kertas-surat">
+            <h2 id="judul-surat" class="font-poppins">Judul Pesan</h2>
+            <div id="isi-surat"></div>
+            
+            <button id="tombol-kembali" onclick="kembaliKeMenu()">Kembali ke Menu 🔙</button>
+        </div>
+    </div>
+
+    <!-- File lagunya, pastikan namanya lagu.mp3 -->
+    <audio id="musik-bg" src="song.mp3" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
